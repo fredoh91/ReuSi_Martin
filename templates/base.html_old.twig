@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+
+        {% block body %}
+        
+<div class="container-header">
+
+        {# <a href="https://localhost/ReuSi/public/index.php/nouveau_signal" class="btn-accueil">Création d'un nouveau signal</a> #}
+        <a href="{{ path('nouveau_signal') }}" class="btn-accueil">Création d'un nouveau signal</a>
+        {# <a href="https://localhost/ReuSi/public/index.php/nouveau_suivi" class="btn-accueil">Création d'un nouveau suivi</a> #}
+        <a href="{{ path('nouveau_suivi') }}" class="btn-accueil">Création d'un nouveau suivi</a>
+        {# <a href="https://localhost/ReuSi/public/index.php/recherche_signal" class="btn-accueil">Recherche d'un signal</a> #}
+        <a href="{{ path('recherche_signal') }}" class="btn-accueil">Recherche d'un signal</a>
+        {# <a href="https://localhost/ReuSi/public/index.php/reunion_nouveaux_signaux" class="btn-accueil">Réunion signal / Nouveaux signaux</a> #}
+        <a href="{{ path('reunion_nouveaux_signaux') }}" class="btn-accueil">Réunion signal / Nouveaux signaux</a>
+        {# <a href="https://localhost/ReuSi/public/index.php/reunion_nouveaux_suivis" class="btn-accueil">Réunion signal / Nouveaux suivis</a> #}
+        <a href="{{ path('reunion_nouveaux_suivis') }}" class="btn-accueil">Réunion signal / Nouveaux suivis</a>
+        {# <a href="https://localhost/ReuSi/public/index.php/reunion_nouveaux_suivi_actions" class="btn-accueil">Réunion signal / Suivi des actions</a> #}
+        <a href="{{ path('reunion_nouveaux_suivi_actions') }}" class="btn-accueil">Réunion signal / Suivi des actions</a>
+
+</div>
+
+        
+        {% endblock %}
+    </body>
+</html>
