@@ -11,17 +11,11 @@
 
 <div class="accueil">
     <div class="accueil_grid">
-        {# <a href="https://localhost/ReuSi/public/index.php/nouveau_signal" class="btn-accueil">Création d'un nouveau signal</a> #}
-        <a href="{{ path('nouveau_signal') }}" class="btn-accueil">Création d'un nouveau signal</a>
-        {# <a href="https://localhost/ReuSi/public/index.php/nouveau_suivi" class="btn-accueil">Création d'un nouveau suivi</a> #}
+        <a href="{{ path('app_nouv_signal_desc_signal') }}" class="btn-accueil">Création d'un nouveau signal</a>
         <a href="{{ path('nouveau_suivi') }}" class="btn-accueil">Création d'un nouveau suivi</a>
-        {# <a href="https://localhost/ReuSi/public/index.php/recherche_signal" class="btn-accueil">Recherche d'un signal</a> #}
         <a href="{{ path('recherche_signal') }}" class="btn-accueil">Recherche d'un signal</a>
-        {# <a href="https://localhost/ReuSi/public/index.php/reunion_nouveaux_signaux" class="btn-accueil">Réunion signal / Nouveaux signaux</a> #}
         <a href="{{ path('reunion_nouveaux_signaux') }}" class="btn-accueil">Réunion signal / Nouveaux signaux</a>
-        {# <a href="https://localhost/ReuSi/public/index.php/reunion_nouveaux_suivis" class="btn-accueil">Réunion signal / Nouveaux suivis</a> #}
         <a href="{{ path('reunion_nouveaux_suivis') }}" class="btn-accueil">Réunion signal / Nouveaux suivis</a>
-        {# <a href="https://localhost/ReuSi/public/index.php/reunion_nouveaux_suivi_actions" class="btn-accueil">Réunion signal / Suivi des actions</a> #}
         <a href="{{ path('reunion_nouveaux_suivi_actions') }}" class="btn-accueil">Réunion signal / Suivi des actions</a>
     </div>
 </div>

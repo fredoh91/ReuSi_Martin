@@ -1,0 +1,142 @@
+// couleurs ANSM
+$ANSM_vert_fonce: #048F36;
+$ANSM_vert_clair: #B0C700;
+$ANSM_violet: #5C2978;
+$ANSM_gris_clair: #EAEAEA;
+$ANSM_gris_fonce: #999999;
+
+.container-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-header {
+    background: linear-gradient(
+        180deg,
+        $ANSM_vert_clair 0%,
+        rgba(255, 255, 255, 0.66) 70%
+      ),
+      $ANSM_vert_clair;
+    border: 1px solid $ANSM_vert_fonce;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 320px;
+    height: 70px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*color: black;*/
+    color: $ANSM_violet;
+    &:hover {
+      background: linear-gradient(
+          180deg,
+          $ANSM_vert_clair 0%,
+          rgba(255, 255, 255, 0.8) 20%
+        ),
+        $ANSM_vert_clair;
+    }
+    &:active {
+      background: linear-gradient(
+          180deg,
+          $ANSM_vert_clair 0%,
+          rgba(255, 255, 255, 0.66) 20%
+        ),
+        $ANSM_vert_clair;
+      box-shadow: 0px 0px 15px black inset;
+    }
+  }
+
+  .btn-header-actif {
+    background: linear-gradient(
+        180deg,
+        $ANSM_vert_clair 0%,
+        rgba(255, 255, 255, 0.66) 110%
+      ),
+      $ANSM_vert_clair;
+    border: 4px solid $ANSM_vert_fonce;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 320px;
+    height: 70px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*color: black;*/
+    color: $ANSM_violet;
+    &:hover {
+      background: linear-gradient(
+          180deg,
+          $ANSM_vert_clair 0%,
+          rgba(255, 255, 255, 0.8) 20%
+        ),
+        $ANSM_vert_clair;
+    }
+    &:active {
+      background: linear-gradient(
+          180deg,
+          $ANSM_vert_clair 0%,
+          rgba(255, 255, 255, 0.66) 20%
+        ),
+        $ANSM_vert_clair;
+      box-shadow: 0px 0px 15px black inset;
+    }
+  }
+
+.btn-header-CreaSignal-inactif {
+    background: $ANSM_gris_clair;
+    border: 1px solid $ANSM_violet;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 320px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $ANSM_violet;
+    &:hover {
+      background: linear-gradient(
+          180deg,
+          $ANSM_gris_fonce 0%,
+          rgba(255, 255, 255, 0.8) 20%
+        ),
+        $ANSM_gris_fonce;
+    }
+    &:active {
+      background: linear-gradient(
+          180deg,
+          $ANSM_gris_fonce 0%,
+          rgba(255, 255, 255, 0.66) 20%
+        ),
+        $ANSM_gris_fonce;
+      box-shadow: 0px 0px 15px black inset;
+    }
+  }
+  
+.btn-header-CreaSignal-actif {
+    background:  linear-gradient(
+        180deg,
+        $ANSM_gris_fonce 0%,
+        rgba(255, 255, 255, 0.66) 70%
+      ),
+      $ANSM_gris_fonce;
+    border: 3px solid $ANSM_violet;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 320px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $ANSM_violet;
+  }
+  

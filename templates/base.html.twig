@@ -10,6 +10,7 @@
         {{ encore_entry_link_tags('app') }}
             {# {{ parent() }} #}
             {{ encore_entry_link_tags('ReuSi') }}
+            {{ encore_entry_link_tags('ReuSi_Header') }}
         {% block stylesheets %}
         {% endblock %}
 
@@ -21,19 +22,12 @@
 
         <div class="container-header">
 
-            {# <a href="https://localhost/ReuSi/public/index.php/nouveau_signal" class="btn-accueil">Création d'un nouveau signal</a>
-            <a href="https://localhost/ReuSi/public/index.php/nouveau_suivi" class="btn-accueil">Création d'un nouveau suivi</a>
-            <a href="https://localhost/ReuSi/public/index.php/recherche_signal" class="btn-accueil">Recherche d'un signal</a>
-            <a href="https://localhost/ReuSi/public/index.php/reunion_nouveaux_signaux" class="btn-accueil">Réunion signal / Nouveaux signaux</a>
-            <a href="https://localhost/ReuSi/public/index.php/reunion_nouveaux_suivis" class="btn-accueil">Réunion signal / Nouveaux suivis</a>
-            <a href="https://localhost/ReuSi/public/index.php/reunion_nouveaux_suivi_actions" class="btn-accueil">Réunion signal / Suivi des actions</a> #}
-
-        <a href="{{ path('nouveau_signal') }}" class="btn-accueil">Création d'un nouveau signal</a>
-        <a href="{{ path('nouveau_suivi') }}" class="btn-accueil">Création d'un nouveau suivi</a>
-        <a href="{{ path('recherche_signal') }}" class="btn-accueil">Recherche d'un signal</a>
-        <a href="{{ path('reunion_nouveaux_signaux') }}" class="btn-accueil">Réunion signal / Nouveaux signaux</a>
-        <a href="{{ path('reunion_nouveaux_suivis') }}" class="btn-accueil">Réunion signal / Nouveaux suivis</a>
-        <a href="{{ path('reunion_nouveaux_suivi_actions') }}" class="btn-accueil">Réunion signal / Suivi des actions</a>
+        <a href="{{ path('app_nouv_signal_desc_signal') }}" class="btn-header" id="nouv_signal_">Création d'un nouveau signal</a>
+        <a href="{{ path('nouveau_suivi') }}" class="btn-header" id="nouveau_suivi">Création d'un nouveau suivi</a>
+        <a href="{{ path('recherche_signal') }}" class="btn-header" id="recherche_signal">Recherche d'un signal</a>
+        <a href="{{ path('reunion_nouveaux_signaux') }}" class="btn-header" id="reunion_nouveaux_signaux">Réunion signal / Nouveaux signaux</a>
+        <a href="{{ path('reunion_nouveaux_suivis') }}" class="btn-header" id="reunion_nouveaux_suivis">Réunion signal / Nouveaux suivis</a>
+        <a href="{{ path('reunion_nouveaux_suivi_actions') }}" class="btn-header" id="reunion_nouveaux_suivi_actions">Réunion signal / Suivi des actions</a>
 
         </div>
 
@@ -41,8 +35,8 @@
         {% block body %}
         {% endblock %}
 
-        
     {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('ReuSi_js') }}
     {# <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>  #}
     </body>
 </html>
