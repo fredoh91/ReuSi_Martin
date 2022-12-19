@@ -15,12 +15,17 @@
 
         </div> 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {{ form(suivi_form) }}
+    {{ form_start(releve_form) }}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/www_htdocs/ReuSi/src/Controller/NouvSignalSuiviSignalController.php'|file_link(0) }}">src/Controller/NouvSignalSuiviSignalController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/www_htdocs/ReuSi/templates/nouv_signal_suivi_signal/index.html.twig'|file_link(0) }}">templates/nouv_signal_suivi_signal/index.html.twig</a></code></li>
-    </ul>
+    <div {{ stimulus_controller('collection') }}
+    data-collection-index-value="{{ releve_form.mesures|length > 0 ? releve_form.mesures|last.vars.name + 1 : 0 }}"
+    data-collection-prototype-value="{{ form_widget(releve_form.mesures.vars.prototype)|e('html_attr') }}">
+
+    <ul {{ stimulus_target('collection', 'collectionContainer') }}></ul>
+    <button type="button" {{ stimulus_action('collection', 'addCollectionElement') }}>Add a tag</button>
+    </div>
+    
+    {{ form_end(releve_form) }}
 </div>
 {% endblock %}
