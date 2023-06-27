@@ -12,9 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RechercheSignalController extends AbstractController
 {
-    /**
-     * @Route("/recherche_signal", name="recherche_signal")
-     */
+    #[Route(path: '/recherche_signal', name: 'recherche_signal')]
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
         $substance = $_GET['substance'] ?? '';

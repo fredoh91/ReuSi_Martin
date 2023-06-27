@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository\Codex;
+namespace App\Repository;
 
 use App\Entity\Codex\VUUtil;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

@@ -8,9 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class NouveauSuiviController extends AbstractController
 {
-    /**
-     * @Route("/nouveau_suivi", name="nouveau_suivi")
-     */
+    #[Route(path: '/nouveau_suivi', name: 'nouveau_suivi')]
     public function index(): Response
     {
         return $this->render('nouveau_suivi/index.html.twig', [

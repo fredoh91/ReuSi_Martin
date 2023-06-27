@@ -2,9 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\Main\Mesure;
-use App\Entity\Main\PassageCTP;
-use App\Entity\Main\PassageRSS;
+use App\Entity\Mesure;
+use App\Entity\PassageCTP;
+use App\Entity\PassageRSS;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;

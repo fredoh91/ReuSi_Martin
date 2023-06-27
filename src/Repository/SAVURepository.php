@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository\Codex;
+namespace App\Repository;
 
 use App\Entity\Codex\SAVU;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

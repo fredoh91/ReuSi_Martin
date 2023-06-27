@@ -2,13 +2,13 @@
 
 namespace App\Form;
 
-use App\Entity\Main\CoPiloteDS;
-use App\Entity\Main\DMM;
-use App\Entity\Main\PiloteDS;
-use App\Entity\Main\PoleDS;
-use App\Entity\Main\SourceSignal;
-use App\Entity\Main\StatutEmetteur;
-use App\Entity\Main\StatutSignal;
+use App\Entity\CoPiloteDS;
+use App\Entity\DMM;
+use App\Entity\PiloteDS;
+use App\Entity\PoleDS;
+use App\Entity\SourceSignal;
+use App\Entity\StatutEmetteur;
+use App\Entity\StatutSignal;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
