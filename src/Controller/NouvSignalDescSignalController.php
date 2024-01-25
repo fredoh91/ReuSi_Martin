@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Main\Signal;
+use App\Entity\Signal;
 use App\Form\SignalDescType;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +16,6 @@ class NouvSignalDescSignalController extends AbstractController
     public function index(Request $request): Response
     {
         $signal = new Signal();
-
         $signal->setDateCreation(new DateTime());
 
         $signalDescForm = $this->createForm(SignalDescType::class, $signal);

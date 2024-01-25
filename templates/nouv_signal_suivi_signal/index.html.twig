@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NouvSignalSuiviSignalController!{% endblock %}
+{% block title %}RéuSi NouvSignalSuiviSignalController!{% endblock %}
 
 {% block body %}
 <style>
@@ -9,11 +9,26 @@
 </style>
         <div class="container-header">
 
-        <a href="{{ path('app_nouv_signal_desc_signal') }}"  class="btn-header-CreaSignal-inactif">Description du signal</a>
-        <a href="{{ path('app_nouv_signal_suivi_signal') }}"  class="btn-header-CreaSignal-actif">Suivi du signal</a>
-        <a href="{{ path('app_nouv_signal_list_action') }}" class="btn-header-CreaSignal-inactif">Liste des actions/mesures</a>
+        <a href="{{ path('app_nouv_signal_desc_signal') }}"  class="btn-header-CreaSignal-inactif" id="btn-1">Description du signal</a>
+        <a href="{{ path('app_nouv_signal_suivi_signal') }}"  class="btn-header-CreaSignal-actif" id="btn-2">Suivi du signal</a>
+        <a href="{{ path('app_nouv_signal_list_action') }}" class="btn-header-CreaSignal-inactif" id="btn-3">Liste des actions/mesures</a>
 
         </div> 
+
+
+    <div id="onglet_1" class="onglet-aff">
+        Contenu de l'onglet 1
+      </div>
+      <div id="onglet_2" class="onglet-mask">
+        Contenu de l'onglet 2
+      </div>
+      <div id="onglet_3" class="onglet-mask">
+        Contenu de l'onglet 3
+      </div>
+    
+  
+
+
 <div class="example-wrapper">
     {{ form(suivi_form) }}
     {{ form_start(releve_form) }}
@@ -28,4 +43,7 @@
     
     {{ form_end(releve_form) }}
 </div>
+
+
+
 {% endblock %}
