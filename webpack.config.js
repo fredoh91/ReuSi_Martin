@@ -24,10 +24,14 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('ReuSi_js', './assets/js/ReuSi.js')
+    .addEntry('ReuSi_Header_js', './assets/js/ReuSi_Header.js')
+    .addEntry('ReuSi_Header_CreaSignal_js', './assets/js/ReuSi_Header_CreaSignal.js')
+    .addEntry('ReuSi_ajoutSuivi_js', './assets/js/ReuSi_ajoutSuivi.js')
 
     // .addStyleEntry('ReuSi', ['./assets/styles/ReuSi.scss'])
     .addStyleEntry('ReuSi', './assets/styles/ReuSi.scss')
     .addStyleEntry('ReuSi_Header', './assets/styles/ReuSi_Header.scss')
+    .addStyleEntry('ReuSi_Header_CreaSignal', './assets/styles/ReuSi_Header_CreaSignal.scss')
     
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

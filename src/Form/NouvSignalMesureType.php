@@ -9,14 +9,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class MesureType extends AbstractType
+class NouvSignalMesureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
         ->add('description',TextType::class, ['required' => false])
-        ->add('datePrev',DateType::class, ['required' => false])
-        ->add('dateRealisation',DateType::class, ['required' => false]);
+        ->add('DatePrev',DateType::class, ['required' => false])
+        ->add('dateRealisation',DateType::class, ['required' => false])
+        ;
     }
 
 

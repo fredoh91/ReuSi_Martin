@@ -7,13 +7,18 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class SuiviType extends AbstractType
+class NouvSignalSuiviType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('description', TextType::class, ['required' => false])
-        ->add('submit', SubmitType::class, ['label' => 'Enregistrer']);
+        ->add('description', TextType::class, [
+            'required' => false,
+            'label' => 'Description du suivi : ',
+            ])
+        // ->add('description', TextType::class, ['empty_data' => ''])
+        // ->add('submit', SubmitType::class, ['label' => 'Enregistrer'])
+        ;
     }
 
 

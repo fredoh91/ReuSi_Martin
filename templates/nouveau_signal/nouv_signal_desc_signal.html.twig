@@ -1,0 +1,34 @@
+
+{% block body %}
+
+Onglet description
+<div class="example-wrapper">
+    {# {{ form(signal_desc_form) }} #}
+    {{form_start(signal_desc_form)}}
+      {{form_widget(signal_desc_form._token)}}
+
+      {{form_row(signal_desc_form.description)}}
+      <button type="button" class="btn btn-primary btn-new" data-collection="#suivis">Ajout suivi</button>
+      <div 
+          id="suivis" 
+          data-prototype="{{ include ('nouveau_signal/_suivi.html.twig', {form: signal_desc_form.suivis.vars.prototype})|e("html_attr") }}" 
+          data-index="{{signal_desc_form.suivis|length > 0 ? signal_desc_form.suivis|last.vars.name + 1 : 0 }}">
+        {% for suivi in signal_desc_form.suivis %}
+          {{ include ('nouveau_signal/_suivi.html.twig', {form: suivi}) }}
+        {% endfor %} 
+      
+      </div>
+
+
+      {# <button type="button" class="btn btn-primary" id="nouveau-suivi">Ajout suivi</button> #}
+      {# {{form_row(signal_desc_form.suivis)}} #}
+
+
+    {{form_end(signal_desc_form,{render_rest: true}) }}
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+  {{ encore_entry_script_tags('ReuSi_ajoutSuivi_js') }}
+{% endblock %}

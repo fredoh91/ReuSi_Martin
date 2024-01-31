@@ -1,7 +1,9 @@
-// couleurs ANSM
-$ANSM_vert_fonce: #048f36;
-$ANSM_vert_clair: #b0c700;
-$ANSM_violet: #5c2978;
+
+////////////////////////////////////////////////////////////////////
+//                     Pour le menu principal                     //
+////////////////////////////////////////////////////////////////////
+
+@import '_variables.scss';
 
 @font-face {
   font-family: "Roboto-Regular";

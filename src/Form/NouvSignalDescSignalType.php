@@ -2,30 +2,33 @@
 
 namespace App\Form;
 
-use App\Entity\CoPiloteDS;
 use App\Entity\DMM;
-use App\Entity\PiloteDS;
+use App\Entity\Suivi;
 use App\Entity\PoleDS;
+use App\Entity\PiloteDS;
+use App\Entity\CoPiloteDS;
 use App\Entity\SourceSignal;
-use App\Entity\StatutEmetteur;
 use App\Entity\StatutSignal;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\StatutEmetteur;
+use App\Form\NouvSignalSuiviType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-class SignalDescType extends AbstractType
+class NouvSignalDescSignalType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('id', HiddenType::class, ['required' => false])
             ->add('dateCreation', DateType::class, ['required' => false, 'format' => 'dd-MM-yyyy', 'disabled' => true])
-            ->add('description', TextType::class, ['required' => false])
+            ->add('description', TextType::class, ['required' => false, 'label' => 'Description du signal : '])
             ->add('indication', TextType::class, ['required' => false])
             ->add('contexte', TextType::class, ['required' => false])
             ->add('niveauRisqueInitial', TextType::class, ['required' => false])
@@ -53,6 +56,15 @@ class SignalDescType extends AbstractType
             ->add('statutEmetteur', EntityType::class, [
                 'class' => StatutEmetteur::class,
                 'choice_label' => 'Libelle',
+            ])
+            ->add('suivis', CollectionType::class, [
+                'entry_type' => NouvSignalSuiviType::class,
+                'entry_options' => ['label' => false],
+                'by_reference'=> false,
+                'allow_add'=> true,
+                'allow_delete'=> true,
+                'label'=> 'Suivi(s)',
+                // 'data_class' => Suivi::class, 
             ])
             ->add('submit', SubmitType::class, ['label' => 'Enregistrer']);
     }

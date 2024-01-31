@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}RéuSi NouveauSignalController!{% endblock %}
+{% block title %}RéuSi - Nouveau signal{% endblock %}
 
 {% block body %}
+
+{{ encore_entry_link_tags('ReuSi_Header_CreaSignal') }}
+
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+</style> 
 
 <div class="container-header">
 
@@ -16,23 +19,24 @@
 
 </div>  
 
+{# {{ form(form) }} #}
 
 <div id="onglet_1" class="onglet-aff">
-  {# Contenu de l'onglet 1
-  <div class="example-wrapper">
-      {{ form(signal_desc_form) }}
-  </div> #}
-
-
-{% include 'nouv_signal_desc_signal/index.html.twig' %}
-
+  {% include 'nouveau_signal/nouv_signal_desc_signal.html.twig' %}
 </div>
+
 <div id="onglet_2" class="onglet-mask">
-  Contenu de l'onglet 2
+  {% include 'nouveau_signal/nouv_signal_suivi_signal.html.twig' %}
 </div>
+
 <div id="onglet_3" class="onglet-mask">
-  Contenu de l'onglet 3
+  {% include 'nouveau_signal/nouv_signal_mesure_signal.html.twig' %}
 </div>
     
   
+{% endblock %}
+
+
+{% block javascripts %}
+  {{ encore_entry_script_tags('ReuSi_Header_CreaSignal_js') }}
 {% endblock %}
