@@ -26,6 +26,7 @@ class Suivi
     private $EmetteurSuivi;
 
     #[ORM\ManyToOne(targetEntity: Signal::class, inversedBy: 'suivis')]
+    // #[ORM\ManyToOne(targetEntity: Foo::class, inversedBy: 'bars')]
     private $SuiviSignal;
 
     #[ORM\OneToMany(mappedBy: 'Suivi', targetEntity: ReleveDecision::class)]

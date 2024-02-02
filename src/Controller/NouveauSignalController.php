@@ -10,6 +10,7 @@ use App\Entity\Signal;
 use App\Form\NouvSignalSuiviType;
 use App\Form\NouvSignalMesureType;
 use App\Form\NouvSignalDescSignalType;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class NouveauSignalController extends AbstractController
 {
     #[Route(path: '/nouveau_signal', name: 'nouveau_signal')]
-    public function index(Request $request): Response
+    public function index(ManagerRegistry $doctrine,Request $request): Response
     {
         $signal = new Signal();
         $signal->setDateCreation(new DateTime());
@@ -27,18 +28,18 @@ class NouveauSignalController extends AbstractController
         $signalDescForm = $this->createForm(NouvSignalDescSignalType::class, $signal);
         $signalDescForm->handleRequest($request);
 
-        $suivi = new Suivi();
-        // $suivi->setDateCreation(new DateTime());
-        // $signal->getSuivis()->add($suivi);
+        // $suivi = new Suivi();
+        // // $suivi->setDateCreation(new DateTime());
+        // // $signal->getSuivis()->add($suivi);
 
-        $suiviForm = $this->createForm(NouvSignalSuiviType::class, $suivi);
-        $suiviForm->handleRequest($request);
+        // $suiviForm = $this->createForm(NouvSignalSuiviType::class, $suivi);
+        // $suiviForm->handleRequest($request);
 
-        $mesure = new Mesure();
-        // $suivi->setDateCreation(new DateTime());
+        // $mesure = new Mesure();
+        // // $suivi->setDateCreation(new DateTime());
 
-        $mesureForm = $this->createForm(NouvSignalMesureType::class, $mesure);
-        $mesureForm->handleRequest($request);
+        // $mesureForm = $this->createForm(NouvSignalMesureType::class, $mesure);
+        // $mesureForm->handleRequest($request);
 
 
         // // test debut
@@ -58,7 +59,12 @@ class NouveauSignalController extends AbstractController
         // test fin
 
         if ($signalDescForm->isSubmitted() && $signalDescForm->isValid()) {
-            dd($signalDescForm);
+            // dd($signalDescForm);
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($signal);
+            // dump($signal);
+            $entityManager->flush();
+            return $this->redirectToRoute("nouveau_signal");
         }
 
 
@@ -70,8 +76,8 @@ class NouveauSignalController extends AbstractController
         return $this->render('nouveau_signal/index.html.twig', [
             'controller_name' => 'NouveauSignalController',
             'signal_desc_form' => $signalDescForm->createView(),
-            'suivi_form' => $suiviForm->createView(),
-            'mesure_form' => $mesureForm->createView(),
+            // 'suivi_form' => $suiviForm->createView(),
+            // 'mesure_form' => $mesureForm->createView(),
         ]);
 
 

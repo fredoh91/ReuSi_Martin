@@ -21,7 +21,7 @@ class StatutEmetteur
     #[ORM\Column(type: 'boolean')]
     private $Actif;
 
-    #[ORM\OneToMany(targetEntity: Signal::class, mappedBy: 'StatuEmetteur')]
+    #[ORM\OneToMany(targetEntity: Signal::class, mappedBy: 'StatutEmetteur')]
     private $signals;
 
     public function __construct()

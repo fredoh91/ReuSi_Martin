@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\DMM;
 use App\Entity\Suivi;
 use App\Entity\PoleDS;
+use App\Entity\Signal;
 use App\Entity\PiloteDS;
 use App\Entity\CoPiloteDS;
 use App\Entity\SourceSignal;
@@ -14,6 +15,7 @@ use App\Form\NouvSignalSuiviType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -64,11 +66,21 @@ class NouvSignalDescSignalType extends AbstractType
                 'allow_add'=> true,
                 'allow_delete'=> true,
                 'label'=> 'Suivi(s)',
+            // ->add('suivis', EntityType::class, [
+            //     'label' => "Ajouter des suivis",
+            //     'class' => Suivi::class,
+            //     'multiple' => true
                 // 'data_class' => Suivi::class, 
             ])
             ->add('submit', SubmitType::class, ['label' => 'Enregistrer']);
     }
 
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Signal::class,
+        ]);
+    }
     public function getBlockPrefix()
     {
         return 'Signal_desc_form';

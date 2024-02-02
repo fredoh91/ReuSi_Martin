@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Table(name: '`signal`')]
+#[ORM\Table(name: 'signal')]
 #[ORM\Entity(repositoryClass: SignalRepository::class)]
 class Signal
 {
@@ -68,8 +68,15 @@ class Signal
     #[ORM\ManyToOne(targetEntity: StatutEmetteur::class, inversedBy: 'signals')]
     private $StatutEmetteur;
 
-    #[ORM\OneToMany(targetEntity: Suivi::class, mappedBy: 'SuiviSignal')]
-    private $suivis;
+    /**
+     * @var Collection<int, Suivi>
+     */
+    // #[ORM\OneToMany(targetEntity: Suivi::class, mappedBy: 'SuiviSignal')]
+    #[ORM\OneToMany(targetEntity: Suivi::class, mappedBy: 'SuiviSignal', cascade: ['persist'])]
+    // #[ORM\OneToMany(targetEntity: Bar::class, mappedBy: 'foo', orphanRemoval: true, cascade: ['persist'])]
+   // #[ORM\OneToMany(targetEntity: Suivi::class, mappedBy: 'SuiviSignal', cascade: 'persist')]
+    // private $suivis;
+    private Collection $suivis;
 
     // #[ORM\OneToMany(targetEntity: ReleveDecision::class, mappedBy: 'ReleveDecisionSignal')]
     // private $releveDecisions;
@@ -305,7 +312,8 @@ class Signal
     public function addSuivi(Suivi $suivi): self
     {
         if (!$this->suivis->contains($suivi)) {
-            $this->suivis[] = $suivi;
+            $this->suivis->add($suivi);
+            // $this->suivis[] = $suivi;
             $suivi->setSuiviSignal($this);
         }
 
