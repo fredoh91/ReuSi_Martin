@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\SignalRepository;
+use App\Repository\SignalANSMRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Table(name: 'signal')]
-#[ORM\Entity(repositoryClass: SignalRepository::class)]
-class Signal
+#[ORM\Table(name: 'signal_ansm')]
+#[ORM\Entity(repositoryClass: SignalANSMRepository::class)]
+class SignalANSM
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -29,10 +29,12 @@ class Signal
     #[ORM\Column(type: 'text', nullable: true)]
     private $Contexte;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    // #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\ManyToOne(targetEntity: NiveauRisqueInitial::class, inversedBy: 'signals')]
     private $NiveauRisqueInitial;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    // #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\ManyToOne(targetEntity: NiveauRisqueFinal::class, inversedBy: 'signals')]
     private $NiveauRisqueFinal;
 
     #[ORM\Column(type: 'text', nullable: true)]
@@ -150,7 +152,7 @@ class Signal
         return $this->NiveauRisqueInitial;
     }
 
-    public function setNiveauRisqueInitial(?string $NiveauRisqueInitial): self
+    public function setNiveauRisqueInitial(?NiveauRisqueInitial $NiveauRisqueInitial): self
     {
         $this->NiveauRisqueInitial = $NiveauRisqueInitial;
 
@@ -162,7 +164,7 @@ class Signal
         return $this->NiveauRisqueFinal;
     }
 
-    public function setNiveauRisqueFinal(?string $NiveauRisqueFinal): self
+    public function setNiveauRisqueFinal(?NiveauRisqueFinal $NiveauRisqueFinal): self
     {
         $this->NiveauRisqueFinal = $NiveauRisqueFinal;
 

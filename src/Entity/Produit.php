@@ -106,7 +106,7 @@ class Produit
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $PrescriptionDelivrance;
 
-    #[ORM\ManyToOne(targetEntity: Signal::class, inversedBy: 'produits')]
+    #[ORM\ManyToOne(targetEntity: SignalANSM::class, inversedBy: 'produits')]
     private $ProduitSignal;
 
     public function getId(): ?int
@@ -486,12 +486,12 @@ class Produit
         return $this;
     }
 
-    public function getProduitSignal(): ?Signal
+    public function getProduitSignal(): ?SignalANSM
     {
         return $this->ProduitSignal;
     }
 
-    public function setProduitSignal(?Signal $ProduitSignal): self
+    public function setProduitSignal(?SignalANSM $ProduitSignal): self
     {
         $this->ProduitSignal = $ProduitSignal;
 

@@ -21,7 +21,7 @@ class StatutSignal
     #[ORM\Column(type: 'boolean')]
     private $Actif;
 
-    #[ORM\OneToMany(targetEntity: Signal::class, mappedBy: 'StatutSignal')]
+    #[ORM\OneToMany(targetEntity: SignalANSM::class, mappedBy: 'StatutSignal')]
     private $signals;
 
     public function __construct()
@@ -66,7 +66,7 @@ class StatutSignal
         return $this->signals;
     }
 
-    public function addSignal(Signal $signal): self
+    public function addSignal(SignalANSM $signal): self
     {
         if (!$this->signals->contains($signal)) {
             $this->signals[] = $signal;
@@ -76,7 +76,7 @@ class StatutSignal
         return $this;
     }
 
-    public function removeSignal(Signal $signal): self
+    public function removeSignal(SignalANSM $signal): self
     {
         if ($this->signals->removeElement($signal)) {
             // set the owning side to null (unless already changed)

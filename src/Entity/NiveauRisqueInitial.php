@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CoPiloteDSRepository;
+use App\Repository\NiveauRisqueInitialRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CoPiloteDSRepository::class)]
-class CoPiloteDS
+#[ORM\Entity(repositoryClass: NiveauRisqueInitialRepository::class)]
+class NiveauRisqueInitial
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,7 +21,7 @@ class CoPiloteDS
     #[ORM\Column(type: 'boolean')]
     private $Actif;
 
-    #[ORM\OneToMany(targetEntity: SignalANSM::class, mappedBy: 'CoPiloteDS')]
+    #[ORM\OneToMany(targetEntity: SignalANSM::class, mappedBy: 'NiveauRisqueInitial')]
     private $signals;
 
     public function __construct()
@@ -70,7 +70,7 @@ class CoPiloteDS
     {
         if (!$this->signals->contains($signal)) {
             $this->signals[] = $signal;
-            $signal->setCoPiloteDS($this);
+            $signal->setNiveauRisqueInitial($this);
         }
 
         return $this;
@@ -80,8 +80,8 @@ class CoPiloteDS
     {
         if ($this->signals->removeElement($signal)) {
             // set the owning side to null (unless already changed)
-            if ($signal->getCoPiloteDS() === $this) {
-                $signal->setCoPiloteDS(null);
+            if ($signal->getNiveauRisqueInitial() === $this) {
+                $signal->setNiveauRisqueInitial(null);
             }
         }
 

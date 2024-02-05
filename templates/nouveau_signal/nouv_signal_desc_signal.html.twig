@@ -2,12 +2,89 @@
 {% block body %}
 
 Onglet description
-<div class="example-wrapper">
+<div class="container-fluid p-5">
     {# {{ form(signal_desc_form) }} #}
     {{form_start(signal_desc_form)}}
-      {{form_widget(signal_desc_form._token)}}
 
-      {{form_row(signal_desc_form.description)}}
+    <div class="row">
+    <div class="col-2"></div>
+      <div class="col-2">
+        {{form_row(signal_desc_form.dateCreation)}}
+      </div>
+      <div class="col-8"></div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12">
+        {{form_row(signal_desc_form.description)}}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-4">
+        {{form_row(signal_desc_form.indication)}}
+      </div>
+      <div class="col-2">
+        {{form_row(signal_desc_form.niveauRisqueInitial)}}
+      </div>
+      <div class="col-2">
+        {{form_row(signal_desc_form.niveauRisqueFinal)}}
+      </div>
+      <div class="col-4">
+        {{form_row(signal_desc_form.anaRisqueComment)}}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-6">
+        {{form_row(signal_desc_form.contexte)}}
+      </div>
+      <div class="col-2">
+        {{form_row(signal_desc_form.PiloteDS)}}
+      </div>
+      <div class="col-2">
+        {{form_row(signal_desc_form.CoPiloteDS)}}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-3">
+        {{form_row(signal_desc_form.sourceSignal)}}
+      </div>
+      <div class="col-3">
+        {{form_row(signal_desc_form.refSignal)}}
+      </div>
+      <div class="col-3">
+        {{form_row(signal_desc_form.poleDS)}}
+      </div>
+      <div class="col-3">
+        {{form_row(signal_desc_form.dmm)}}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-4">
+        {{form_row(signal_desc_form.identifiantSource)}}
+      </div>
+      <div class="col-4">
+        {{form_row(signal_desc_form.statutEmetteur)}}
+      </div>
+      <div class="col-4">
+        {{form_row(signal_desc_form.statutSignal)}}
+      </div>
+    </div>
+
+
+
+
+
+      {# {{form_widget(signal_desc_form._token)}} #}
+
       <button type="button" class="btn btn-primary btn-new" data-collection="#suivis">Ajout suivi</button>
       <div 
           id="suivis" 
@@ -16,11 +93,11 @@ Onglet description
         {% for suivi in signal_desc_form.suivis %}
           {{ include ('nouveau_signal/_suivi.html.twig', {form: suivi}) }}
         {% endfor %} 
-      
       </div>
-      {{form_row(signal_desc_form.submit)}}
-                    {# <button class="btn btn-primary">Create</button> #}
-    {{form_end(signal_desc_form,{render_rest: false}) }}
+
+      
+      {# {{form_row(signal_desc_form.submit)}} #}
+    {{form_end(signal_desc_form,{render_rest: true}) }}
 </div>
 
 {% endblock %}

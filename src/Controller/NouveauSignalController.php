@@ -6,7 +6,7 @@ use DateTime;
 use App\Entity\Suivi;
 use App\Entity\Mesure;
 // use App\Form\SignalDescType;
-use App\Entity\Signal;
+use App\Entity\SignalANSM;
 use App\Form\NouvSignalSuiviType;
 use App\Form\NouvSignalMesureType;
 use App\Form\NouvSignalDescSignalType;
@@ -22,7 +22,7 @@ class NouveauSignalController extends AbstractController
     #[Route(path: '/nouveau_signal', name: 'nouveau_signal')]
     public function index(ManagerRegistry $doctrine,Request $request): Response
     {
-        $signal = new Signal();
+        $signal = new SignalANSM();
         $signal->setDateCreation(new DateTime());
 
         $signalDescForm = $this->createForm(NouvSignalDescSignalType::class, $signal);

@@ -25,7 +25,7 @@ class Suivi
     #[ORM\ManyToOne(targetEntity: EmetteurSuivi::class, inversedBy: 'suivis')]
     private $EmetteurSuivi;
 
-    #[ORM\ManyToOne(targetEntity: Signal::class, inversedBy: 'suivis')]
+    #[ORM\ManyToOne(targetEntity: SignalANSM::class, inversedBy: 'suivis')]
     // #[ORM\ManyToOne(targetEntity: Foo::class, inversedBy: 'bars')]
     private $SuiviSignal;
 
@@ -78,12 +78,12 @@ class Suivi
         return $this;
     }
 
-    public function getSuiviSignal(): ?Signal
+    public function getSuiviSignal(): ?SignalANSM
     {
         return $this->SuiviSignal;
     }
 
-    public function setSuiviSignal(?Signal $SuiviSignal): self
+    public function setSuiviSignal(?SignalANSM $SuiviSignal): self
     {
         $this->SuiviSignal = $SuiviSignal;
 

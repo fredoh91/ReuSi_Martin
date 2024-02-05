@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Signal;
+use App\Entity\SignalANSM;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Signal|null find($id, $lockMode = null, $lockVersion = null)
- * @method Signal|null findOneBy(array $criteria, array $orderBy = null)
- * @method Signal[]    findAll()
- * @method Signal[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method SignalANSM|null find($id, $lockMode = null, $lockVersion = null)
+ * @method SignalANSM|null findOneBy(array $criteria, array $orderBy = null)
+ * @method SignalANSM[]    findAll()
+ * @method SignalANSM[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SignalRepository extends ServiceEntityRepository
+class SignalANSMRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Signal::class);
+        parent::__construct($registry, SignalANSM::class);
     }
 
     public function testJoin()
@@ -30,7 +30,7 @@ class SignalRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Signal[]
+     * @return SignalANSM[]
      */
     public function findLike($produit, $substance): array
     {
