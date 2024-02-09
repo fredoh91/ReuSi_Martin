@@ -2,10 +2,12 @@
 
 namespace App\Form;
 
-use Doctrine\DBAL\Types\DateType as TypesDateType;
+use App\Entity\Mesure;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Doctrine\DBAL\Types\DateType as TypesDateType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -20,6 +22,12 @@ class NouvSignalMesureType extends AbstractType
         ;
     }
 
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Mesure::class,
+        ]);
+    }
 
     public function getBlockPrefix()
     {

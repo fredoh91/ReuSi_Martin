@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche / Création de produit - saisie de médicament{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid p-5">
+
+	{{idSignal}}
+	<br>
+	{{codeVU}}
+
+
+	{{form_start(form)}}
+		{# <div class="row">
+			<div class="col-3">
+				{{ form_label(form.denomination, 'Dénomination :') }}
+				{{ form_widget(form.denomination) }}
+			</div>
+			<div class="col-3">
+				{{ form_label(form.dci, 'DCI :') }}
+				{{ form_widget(form.dci) }}
+			</div>
+		</div>
+	    <div class="row">
+			<div class="col-1">
+				{{ form_label(form.recherche, 'Recherche') }}
+				{{ form_widget(form.recherche) }}
+			</div>
+			<div class="col-1">
+				{{ form_label(form.reset, 'Reset') }}
+				{{ form_widget(form.reset) }}
+			</div>
+		</div> #}
+	{{form_end(form)}}
+
+	</div>
+		
+{% endblock %}

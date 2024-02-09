@@ -64,6 +64,13 @@ class NouveauSignalController extends AbstractController
             $entityManager->persist($signal);
             // dump($signal);
             $entityManager->flush();
+
+            if($signalDescForm->get('AjoutProduit')->isClicked()) {
+                dd($signal->getId());
+            } else {
+
+            }
+
             return $this->redirectToRoute("nouveau_signal");
         }
 

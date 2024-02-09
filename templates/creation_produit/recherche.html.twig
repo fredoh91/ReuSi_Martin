@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche / Création de produit - recherche de produits{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid p-5">
+	{{form_start(form)}}
+		<div class="row">
+			<div class="col-3">
+				{{ form_label(form.denomination, 'Dénomination :') }}
+				{{ form_widget(form.denomination) }}
+			</div>
+			<div class="col-3">
+				{{ form_label(form.dci, 'DCI :') }}
+				{{ form_widget(form.dci) }}
+			</div>
+		</div>
+	    <div class="row">
+			<div class="col-1">
+				{{ form_label(form.recherche, 'Recherche') }}
+				{{ form_widget(form.recherche) }}
+			</div>
+			<div class="col-1">
+				{{ form_label(form.reset, 'Reset') }}
+				{{ form_widget(form.reset) }}
+			</div>
+		</div>
+	{{form_end(form)}}
+
+	</div>
+		<div class="container-fluid">
+			{% if LstProduits %}
+				Nombre de lignes : {{ NbProduits }}
+				{# <h3>Liste des Produits : </h3> #}
+				{# {{dump(Susars)}} #}
+				<table class="table table-sm table-bordered table-hover text-center">
+					<thead class="table-secondary">
+						<tr>
+							<th scope="col">création du produit</th>
+							{# <th scope="col">codeVU</th>
+							<th scope="col">codeDossier</th> #}
+							<th scope="col-2">Dénomination</th>
+							<th scope="col-2">DCI</th>
+							<th scope="col">Dosage</th>
+							<th scope="col">Voie</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for Produit in LstProduits %}
+							<tr>
+								<td> 
+								<a class="btn btn-primary" href="{{ path('app_creation_produit_saisie',{'idSignal': idSignal,'codeVU':Produit.codeVU}) }}" role="button">Aj. prod. ({{ Produit.codeVU|e }})</a>
+								
+								{# <button type="button" ></button>  #}
+								
+								 {# {{ Produit.codeVU|e }} #}
+								
+								
+									{# <a href="{{ path('app_affiche_susar',{'master_id':cas.MasterId}) }}">{{ cas.specificcaseid|e }}</a> #}
+								
+								</td>
+								{# <td>{{ Produit.codeVU|e }}</td>
+								<td>{{ Produit.codeDossier|e }}</td> #}
+								<td>{{ Produit.nomVU|e }}</td>
+								<td>{{ Produit.nomSubstance|e }}</td>
+								<td>{{ Produit.dosageLibra|e }}</td>
+								<td>{{ Produit.libCourt|e }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				{{ knp_pagination_render(LstProduits) }}
+			{% endif %}
+		</div>
+{% endblock %}

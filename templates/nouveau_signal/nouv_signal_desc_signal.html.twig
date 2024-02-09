@@ -23,6 +23,19 @@ Onglet description
 
 
     <div class="row">
+      <div class="col-12">
+        Médicaments
+        {# {{form_row(signal_desc_form.description)}} #}
+      </div>
+      <div class="col-1">
+				{{ form_widget(signal_desc_form.AjoutProduit) }}
+        {# <button class="btn btn-primary">Ajout de produit</button> #}
+        {# {{form_row(signal_desc_form.description)}} #}
+      </div>
+    </div>
+
+
+    <div class="row">
       <div class="col-4">
         {{form_row(signal_desc_form.indication)}}
       </div>

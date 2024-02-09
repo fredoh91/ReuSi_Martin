@@ -163,7 +163,16 @@ class NouvSignalDescSignalType extends AbstractType
             //     'multiple' => true
                 // 'data_class' => Suivi::class, 
             ])
-            ->add('submit', SubmitType::class, ['label' => 'Enregistrer']);
+            ->add('AjoutProduit', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-primary m-2'],
+                'label' => 'Ajouter un produit']
+            )
+            ->add('submit', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-primary m-2'],
+                'label' => 'Enregistrer']
+            )
+            // ->add('submit', SubmitType::class, ['label' => 'Enregistrer'])
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
