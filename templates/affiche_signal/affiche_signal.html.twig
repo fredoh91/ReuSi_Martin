@@ -1,0 +1,215 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RéuSi - Recherche d'un signal{% endblock %}
+
+{% block body %}
+
+{{ encore_entry_link_tags('ReuSi_Header_CreaSignal') }}
+
+<div class="container-header">
+
+  <a href="{{ path('app_nouv_signal_desc_signal') }}"  class="btn-header-CreaSignal-actif" id="btn-1">Description du signal</a>
+  <a href="{{ path('app_nouv_signal_suivi_signal') }}" class="btn-header-CreaSignal-inactif" id="btn-2">Suivi du signal</a>
+  <a href="{{ path('app_nouv_signal_list_action') }}" class="btn-header-CreaSignal-inactif" id="btn-3">Liste des actions/mesures</a>
+
+</div>  
+
+{# {{ form(form) }} #}
+
+<div id="onglet_1" class="onglet-aff">
+  {# {% include 'nouveau_signal/nouv_signal_desc_signal.html.twig' %} #}
+
+		<div class="container-fluid">
+
+
+
+			{# {% if signal %}
+        <table class="table table-dark table-hover">
+                {{signal.id}} 
+                {{signal.description}} <br>
+                
+                {% if signal.produits %}
+
+                    {% for produit in signal.produits %}
+
+                
+                    &nbsp;&nbsp;&nbsp;
+                    {{produit.denomination}} - {{produit.dci}}  <br>
+
+                    {% endfor %}
+
+                {% endif %}
+        </table>
+
+
+			{% endif %}
+		</div> #}
+
+
+
+Onglet description
+<div class="container-fluid p-5">
+    {# {{ form(signal_desc_form) }} #}
+    {{form_start(signal_desc_form)}}
+
+    <div class="row">
+    <div class="col-2">
+      IdSignal : {{signal.id}}
+    </div>
+      <div class="col-2">
+        {{form_row(signal_desc_form.dateCreation)}}
+      </div>
+      <div class="col-8"></div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12">
+        {{form_row(signal_desc_form.description)}}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12">
+        Médicaments : <BR>
+        {% if signal.produits|length > 0 %}
+          <table class="table table-secondary table-hover table-striped table-bordered table-sm"> 
+            <thead>
+              <tr>
+              <th scope="col" class="text-center h6">Modif/détail méd.</th>
+              <th scope="col" class="text-center h5">Dénomination</th>
+              <th scope="col" class="text-center h5">DCI</th>
+              <th scope="col" class="text-center h5">Code ATC</th>
+              <th scope="col" class="text-center h5">Voie</th>
+              <th scope="col" class="text-center h5">Dosage</th>
+              <th scope="col" class="text-center h5">Proc</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for produit in signal.produits %}
+                <tr>
+                    <th scope="row" class="text-center h6">
+                        <a href="{{ path('affiche_produit',{'idProduit':produit.id}) }}" class="text-light">{{ produit.id|e }}</a>
+                    </th>
+                    <td class="h6">{{produit.Denomination|e}}</td>
+                    <td class="h6">{{produit.DCI|e}}</td>
+                    <td class="h6">{{produit.CodeATC|e}}</td>
+                    <td class="h6">{{produit.Voie|e}}</td>
+                    <td class="h6">{{produit.Dosage|e}}</td>
+                    <td class="h6">{{produit.TypeProcedure|e}}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          Pas de médicaments associé à ce signal
+        {% endif %}
+
+      </div>
+      <div class="col-1">
+				{{ form_widget(signal_desc_form.AjoutProduit) }}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-4">
+        {{form_row(signal_desc_form.indication)}}
+      </div>
+      <div class="col-2">
+        {{form_row(signal_desc_form.niveauRisqueInitial)}}
+      </div>
+      <div class="col-2">
+        {{form_row(signal_desc_form.niveauRisqueFinal)}}
+      </div>
+      <div class="col-4">
+        {{form_row(signal_desc_form.anaRisqueComment)}}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-6">
+        {{form_row(signal_desc_form.contexte)}}
+      </div>
+      <div class="col-2">
+        {{form_row(signal_desc_form.PiloteDS)}}
+      </div>
+      <div class="col-2">
+        {{form_row(signal_desc_form.CoPiloteDS)}}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-3">
+        {{form_row(signal_desc_form.sourceSignal)}}
+      </div>
+      <div class="col-3">
+        {{form_row(signal_desc_form.refSignal)}}
+      </div>
+      <div class="col-3">
+        {{form_row(signal_desc_form.poleDS)}}
+      </div>
+      <div class="col-3">
+        {{form_row(signal_desc_form.dmm)}}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-4">
+        {{form_row(signal_desc_form.identifiantSource)}}
+      </div>
+      <div class="col-4">
+        {{form_row(signal_desc_form.statutEmetteur)}}
+      </div>
+      <div class="col-4">
+        {{form_row(signal_desc_form.statutSignal)}}
+      </div>
+    </div>
+
+
+
+
+
+      {# {{form_widget(signal_desc_form._token)}} #}
+
+      {# <button type="button" class="btn btn-primary btn-new" data-collection="#suivis">Ajout suivi</button> #}
+      <button type="button" class="btn-envoi m-2 btn-new" data-collection="#suivis">Ajout suivi</button>
+      <div 
+          id="suivis" 
+          data-prototype="{{ include ('nouveau_signal/_suivi.html.twig', {form: signal_desc_form.suivis.vars.prototype})|e("html_attr") }}" 
+          data-index="{{signal_desc_form.suivis|length > 0 ? signal_desc_form.suivis|last.vars.name + 1 : 0 }}">
+        {% for suivi in signal_desc_form.suivis %}
+          {{ include ('nouveau_signal/_suivi.html.twig', {form: suivi}) }}
+        {% endfor %} 
+      </div>
+
+      
+      {# {{form_row(signal_desc_form.submit)}} #}
+    {{form_end(signal_desc_form,{render_rest: true}) }}
+</div>
+
+
+
+</div>
+
+<div id="onglet_2" class="onglet-mask">
+  {% include 'nouveau_signal/nouv_signal_suivi_signal.html.twig' %}
+</div>
+
+<div id="onglet_3" class="onglet-mask">
+  {% include 'nouveau_signal/nouv_signal_mesure_signal.html.twig' %}
+</div>
+    
+  
+{% endblock %}
+
+
+{% block javascripts %}
+  {{ encore_entry_script_tags('ReuSi_Header_CreaSignal_js') }}
+  {{ encore_entry_script_tags('ReuSi_ajoutSuivi_js') }}
+{% endblock %}
+

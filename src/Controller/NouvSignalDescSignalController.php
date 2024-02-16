@@ -22,7 +22,7 @@ class NouvSignalDescSignalController extends AbstractController
         $signalDescForm->handleRequest($request);
 
         return $this->render('nouv_signal_desc_signal/index.html.twig', [
-            'controller_name' => 'NouvSignalDescSignalController',
+            // 'controller_name' => 'NouvSignalDescSignalController',
             'signal_desc_form' => $signalDescForm->createView(),
         ]);
     }

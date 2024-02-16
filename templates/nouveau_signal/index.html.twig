@@ -6,11 +6,6 @@
 
 {{ encore_entry_link_tags('ReuSi_Header_CreaSignal') }}
 
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style> 
-
 <div class="container-header">
 
   <a href="{{ path('app_nouv_signal_desc_signal') }}"  class="btn-header-CreaSignal-actif" id="btn-1">Description du signal</a>
@@ -21,18 +16,26 @@
 
 {# {{ form(form) }} #}
 
-<div id="onglet_1" class="onglet-aff">
-  {% include 'nouveau_signal/nouv_signal_desc_signal.html.twig' %}
+<div class="container-fluid p-5">
+    {# {{ form(signal_desc_form) }} #}
+    {{form_start(signal_desc_form)}}
+
+
+    <div id="onglet_1" class="onglet-aff">
+      {% include 'nouveau_signal/nouv_signal_desc_signal.html.twig' %}
+    </div>
+
+    <div id="onglet_2" class="onglet-mask">
+      {% include 'nouveau_signal/nouv_signal_suivi_signal.html.twig' %}
+    </div>
+
+    <div id="onglet_3" class="onglet-mask">
+      {% include 'nouveau_signal/nouv_signal_mesure_signal.html.twig' %}
+    </div>
+
+    {{form_end(signal_desc_form,{render_rest: true}) }}
 </div>
 
-<div id="onglet_2" class="onglet-mask">
-  {% include 'nouveau_signal/nouv_signal_suivi_signal.html.twig' %}
-</div>
-
-<div id="onglet_3" class="onglet-mask">
-  {% include 'nouveau_signal/nouv_signal_mesure_signal.html.twig' %}
-</div>
-    
   
 {% endblock %}
 

@@ -4,34 +4,186 @@
 
 {% block body %}
 
-<div class="container-fluid p-5">
+<div class="container-fluid mx-5 my-2">
+{# <div class="container"> #}
 
-	{{idSignal}}
+	{# {{idSignal}}
 	<br>
-	{{codeVU}}
+	{{codeVU}} #}
 
 
 	{{form_start(form)}}
-		{# <div class="row">
-			<div class="col-3">
-				{{ form_label(form.denomination, 'Dénomination :') }}
-				{{ form_widget(form.denomination) }}
-			</div>
-			<div class="col-3">
-				{{ form_label(form.dci, 'DCI :') }}
-				{{ form_widget(form.dci) }}
+
+		<div class="row">
+			<div class="col-12">
+				{{ form_label(form.Denomination, 'Dénomination :') }}
+				{{ form_widget(form.Denomination) }}
 			</div>
 		</div>
-	    <div class="row">
-			<div class="col-1">
-				{{ form_label(form.recherche, 'Recherche') }}
-				{{ form_widget(form.recherche) }}
+		<div class="row">
+			<div class="col-10">
+				{{ form_label(form.DCI, 'DCI :') }}
+				{{ form_widget(form.DCI) }}
 			</div>
-			<div class="col-1">
-				{{ form_label(form.reset, 'Reset') }}
-				{{ form_widget(form.reset) }}
+			<div class="col-2">
+				{{ form_label(form.CodeDossier, 'Code dossier :') }}
+				{{ form_widget(form.CodeDossier) }}
 			</div>
-		</div> #}
+		</div>
+
+		<div class="row">
+			<div class="col-2">
+				{{ form_label(form.CodeATC, 'Code ATC :') }}
+				{{ form_widget(form.CodeATC) }}
+			</div>
+			<div class="col-8">
+				{{ form_label(form.LibATC, 'Libellé ATC :') }}
+				{{ form_widget(form.LibATC) }}
+			</div>
+			<div class="col-2">
+				{{ form_label(form.CodeCIS, 'Code CIS :') }}
+				{{ form_widget(form.CodeCIS) }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-2">
+				{{ form_label(form.Voie, 'Voie :') }}
+				{{ form_widget(form.Voie) }}
+			</div>
+			<div class="col-8">
+				{{ form_label(form.Dosage, 'Dosage :') }}
+				{{ form_widget(form.Dosage) }}
+			</div>
+			<div class="col-2">
+				{{ form_label(form.TypeProcedure, 'Type procédure :') }}
+				{{ form_widget(form.TypeProcedure) }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				{{ form_label(form.PrescriptionDelivrance, 'Conditions de prescription et de délivrance :') }}
+				{{ form_widget(form.PrescriptionDelivrance) }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-1">
+				<b>Exploitant</b>
+			</div>
+			<div class="col-8">
+				{{ form_label(form.Laboratoire, 'Laboratoire :') }}
+				{{ form_widget(form.Laboratoire) }}
+			</div>
+			<div class="col-3">
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-1">
+				
+			</div>
+			<div class="col-9">
+				{{ form_label(form.Adresse, 'Adresse :') }}
+				{{ form_widget(form.Adresse) }}
+			</div>
+			<div class="col-2">
+				{{ form_label(form.Tel, 'Téléphone :') }}
+				{{ form_widget(form.Tel) }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-1">
+				
+			</div>
+			<div class="col-9">
+				{{ form_label(form.AdresseComplExpl, 'Compl. adr. :') }}
+				{{ form_widget(form.AdresseComplExpl) }}
+			</div>
+			<div class="col-2">
+				{{ form_label(form.Fax, 'Fax :') }}
+				{{ form_widget(form.Fax) }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-1">
+				
+			</div>
+			<div class="col-2">
+				{{ form_label(form.CodePostExpl, 'Code postal :') }}
+				{{ form_widget(form.CodePostExpl) }}
+			</div>
+			<div class="col-7">
+				{{ form_label(form.NomVilleExpl, 'Ville :') }}
+				{{ form_widget(form.NomVilleExpl) }}
+			</div>
+			<div class="col-2">
+
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-1">
+				<b>Titulaire</b>
+			</div>
+			<div class="col-8">
+				{{ form_label(form.Titulaire, 'Laboratoire :') }}
+				{{ form_widget(form.Titulaire) }}
+			</div>
+			<div class="col-3">
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-1">
+				
+			</div>
+			<div class="col-9">
+				{{ form_label(form.AdresseContact, 'Adresse :') }}
+				{{ form_widget(form.AdresseContact) }}
+			</div>
+			<div class="col-2">
+				{{ form_label(form.TelContact, 'Téléphone :') }}
+				{{ form_widget(form.TelContact) }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-1">
+				
+			</div>
+			<div class="col-9">
+				{{ form_label(form.AdresseCompl, 'Compl. adr. :') }}
+				{{ form_widget(form.AdresseCompl) }}
+			</div>
+			<div class="col-2">
+				{{ form_label(form.FaxContact, 'Fax :') }}
+				{{ form_widget(form.FaxContact) }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-1">
+				
+			</div>
+			<div class="col-2">
+				{{ form_label(form.CodePost, 'Code postal :') }}
+				{{ form_widget(form.CodePost) }}
+			</div>
+			<div class="col-7">
+				{{ form_label(form.NomVille, 'Ville :') }}
+				{{ form_widget(form.NomVille) }}
+			</div>
+			<div class="col-2">
+
+			</div>
+		</div>
+
+
+
+	{# {{ form_widget(form._token) }} #}
 	{{form_end(form)}}
 
 	</div>

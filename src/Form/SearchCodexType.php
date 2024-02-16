@@ -32,7 +32,8 @@ class SearchCodexType extends AbstractType
                 'recherche',
                 SubmitType::class,
                 [
-                    'attr' => ['class' => 'btn btn-primary m-2'],
+                    // 'attr' => ['class' => 'btn btn-primary m-2'],
+                    'attr' => ['class' => 'btn-envoi m-2'],
                     'label' => 'Rechercher',
                     'row_attr' => ['id' => 'recherche'],
                 ]
@@ -42,7 +43,8 @@ class SearchCodexType extends AbstractType
                 // ResetType::class,
                 SubmitType::class,
                 [
-                    'attr' => ['class' => 'btn btn-primary m-2'],
+                    // 'attr' => ['class' => 'btn btn-primary m-2'],
+                    'attr' => ['class' => 'btn-envoi m-2'],
                     'label' => 'Reset',
                     'row_attr' => ['id' => 'reset'],
                 ]

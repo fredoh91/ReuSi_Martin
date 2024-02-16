@@ -2,12 +2,13 @@
 {% block body %}
 
 Onglet description
-<div class="container-fluid p-5">
-    {# {{ form(signal_desc_form) }} #}
-    {{form_start(signal_desc_form)}}
+{# <div class="container-fluid p-5">
+    {{form_start(signal_desc_form)}} #}
 
+    {# {{ form(signal_desc_form) }} #}
     <div class="row">
-    <div class="col-2"></div>
+    <div class="col-1"></div>
+    <div class="col-1"></div>
       <div class="col-2">
         {{form_row(signal_desc_form.dateCreation)}}
       </div>
@@ -98,7 +99,11 @@ Onglet description
 
       {# {{form_widget(signal_desc_form._token)}} #}
 
-      <button type="button" class="btn btn-primary btn-new" data-collection="#suivis">Ajout suivi</button>
+      {# <button type="button" class="btn btn-primary btn-new" data-collection="#suivis">Ajout suivi</button> #}
+
+
+
+      {# <button type="button" class="btn-envoi m-2 btn-new" data-collection="#suivis">Ajout suivi</button>
       <div 
           id="suivis" 
           data-prototype="{{ include ('nouveau_signal/_suivi.html.twig', {form: signal_desc_form.suivis.vars.prototype})|e("html_attr") }}" 
@@ -106,12 +111,14 @@ Onglet description
         {% for suivi in signal_desc_form.suivis %}
           {{ include ('nouveau_signal/_suivi.html.twig', {form: suivi}) }}
         {% endfor %} 
-      </div>
+      </div> #}
 
       
       {# {{form_row(signal_desc_form.submit)}} #}
-    {{form_end(signal_desc_form,{render_rest: true}) }}
-</div>
+
+
+    {# {{form_end(signal_desc_form,{render_rest: true}) }}
+</div> #}
 
 {% endblock %}
 

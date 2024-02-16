@@ -27,6 +27,7 @@ Encore
     .addEntry('ReuSi_Header_js', './assets/js/ReuSi_Header.js')
     .addEntry('ReuSi_Header_CreaSignal_js', './assets/js/ReuSi_Header_CreaSignal.js')
     .addEntry('ReuSi_ajoutSuivi_js', './assets/js/ReuSi_ajoutSuivi.js')
+    .addEntry('ReuSi_listeSignal_js', './assets/js/listeSignal.js')
     // .addEntry('Foo_js', './assets/js/Foo_js.js')
 
     // .addStyleEntry('ReuSi', ['./assets/styles/ReuSi.scss'])

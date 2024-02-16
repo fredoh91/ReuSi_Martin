@@ -164,11 +164,13 @@ class NouvSignalDescSignalType extends AbstractType
                 // 'data_class' => Suivi::class, 
             ])
             ->add('AjoutProduit', SubmitType::class, [
-                'attr' => ['class' => 'btn btn-primary m-2'],
+                // 'attr' => ['class' => 'btn btn-primary m-2'],
+                'attr' => ['class' => 'btn-envoi m-2'],
                 'label' => 'Ajouter un produit']
             )
             ->add('submit', SubmitType::class, [
-                'attr' => ['class' => 'btn btn-primary m-2'],
+                // 'attr' => ['class' => 'btn btn-primary m-2'],
+                'attr' => ['class' => 'btn-envoi m-2'],
                 'label' => 'Enregistrer']
             )
             // ->add('submit', SubmitType::class, ['label' => 'Enregistrer'])

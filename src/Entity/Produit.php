@@ -41,7 +41,7 @@ class Produit
     private $CodeVU;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $CodeDissier;
+    private $CodeDossier;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $NomVU;
@@ -103,7 +103,8 @@ class Produit
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $DP;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    // #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'text', nullable: true)]
     private $PrescriptionDelivrance;
 
     #[ORM\ManyToOne(targetEntity: SignalANSM::class, inversedBy: 'produits')]
@@ -222,14 +223,14 @@ class Produit
         return $this;
     }
 
-    public function getCodeDissier(): ?string
+    public function getCodeDossier(): ?string
     {
-        return $this->CodeDissier;
+        return $this->CodeDossier;
     }
 
-    public function setCodeDissier(?string $CodeDissier): self
+    public function setCodeDossier(?string $CodeDossier): self
     {
-        $this->CodeDissier = $CodeDissier;
+        $this->CodeDossier = $CodeDossier;
 
         return $this;
     }

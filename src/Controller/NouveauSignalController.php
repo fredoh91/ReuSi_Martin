@@ -71,7 +71,8 @@ class NouveauSignalController extends AbstractController
 
             }
 
-            return $this->redirectToRoute("nouveau_signal");
+            // return $this->redirectToRoute("nouveau_signal");
+            return $this->redirectToRoute("recherche_signal");
         }
 
 
@@ -81,7 +82,6 @@ class NouveauSignalController extends AbstractController
         //     'form' => $form->createView(),
         // ]);
         return $this->render('nouveau_signal/index.html.twig', [
-            'controller_name' => 'NouveauSignalController',
             'signal_desc_form' => $signalDescForm->createView(),
             // 'suivi_form' => $suiviForm->createView(),
             // 'mesure_form' => $mesureForm->createView(),

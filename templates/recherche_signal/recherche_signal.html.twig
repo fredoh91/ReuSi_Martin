@@ -1,0 +1,188 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Affichage/recherche des signaux{% endblock %}
+
+{% block body %}
+
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('ReuSi_listeSignal_js') }}
+{% endblock %}
+
+{# Formulaire de recherche #}
+
+		<div class="container-fluid">
+
+            {{ form_start(form) }}
+
+
+            <div class="row">
+                <div class="col-2">
+                    {{ form_label(form.id, 'id signal : ') }}
+                    {{ form_widget(form.id) }}
+                </div>
+                <div class="col-2">
+
+                </div>
+                <div class="col-2">
+                    {{ form_label(form.debutDateCreation, 'début de date de création : ') }}
+                    {{ form_widget(form.debutDateCreation) }}
+                </div>
+                <div class="col-2">
+                    {{ form_label(form.finDateCreation, 'fin de date de création : ') }}
+                    {{ form_widget(form.finDateCreation) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    {{ form_label(form.Description, 'Description : ') }}
+                    {{ form_widget(form.Description) }}
+                </div>
+                <div class="col-3">
+                    {{ form_label(form.DenoDCI, 'Denomination/DCI : ') }}
+                    {{ form_widget(form.DenoDCI) }}
+                </div>
+                <div class="col-3">
+                    {{ form_label(form.Indication, 'Indication : ') }}
+                    {{ form_widget(form.Indication) }}
+                </div>
+                <div class="col-3">
+                    {{ form_label(form.Contexte, 'Contexte : ') }}
+                    {{ form_widget(form.Contexte) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    {{ form_label(form.NiveauRisqueInitial, 'Niveau de risque initial  : ') }}
+                    {{ form_widget(form.NiveauRisqueInitial) }}
+                </div>
+                <div class="col-2">
+                    {{ form_label(form.NiveauRisqueFinal, 'Niveau de risque final : ') }}
+                    {{ form_widget(form.NiveauRisqueFinal) }}
+                </div>
+                <div class="col-3">
+                    {{ form_label(form.AnaRisqueComment, 'Commentaire analyse de risque : ') }}
+                    {{ form_widget(form.AnaRisqueComment) }}
+                </div>
+                <div class="col-3">
+                    {{ form_label(form.ProposReducRisque, 'Proposition de réduction du risque : ') }}
+                    {{ form_widget(form.ProposReducRisque) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    {{ form_label(form.SourceSignal, 'Source du signal  : ') }}
+                    {{ form_widget(form.SourceSignal) }}
+                </div>
+                <div class="col-3">
+                    {{ form_label(form.IdentifiantSource, 'Identifiant source du signal : ') }}
+                    {{ form_widget(form.IdentifiantSource) }}
+                </div>
+                <div class="col-3">
+                    {{ form_label(form.RefSignal, 'Référence du signal : ') }}
+                    {{ form_widget(form.RefSignal) }}
+                </div>
+                <div class="col-3">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    {{ form_label(form.PoleDS, 'Pole DS concerné : ') }}
+                    {{ form_widget(form.PoleDS) }}
+                </div>
+                <div class="col-2">
+                    {{ form_label(form.DMM, 'DMM concernée : ') }}
+                    {{ form_widget(form.DMM) }}
+                </div>
+                <div class="col-2">
+                    {{ form_label(form.PiloteDS, 'Pilote DS : ') }}
+                    {{ form_widget(form.PiloteDS) }}
+                </div>
+                <div class="col-2">
+                    {{ form_label(form.CoPiloteDS, 'Co-pilote DS : ') }}
+                    {{ form_widget(form.CoPiloteDS) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+
+                </div>
+                <div class="col-2">
+
+                </div>
+                <div class="col-2">
+                    {{ form_label(form.StatutSignal, 'Statut du signal : ') }}
+                    {{ form_widget(form.StatutSignal) }}
+                </div>
+                <div class="col-2">
+                    {{ form_label(form.StatutEmetteur, 'Statut émetteur : ') }}
+                    {{ form_widget(form.StatutEmetteur) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-10">
+
+                </div>
+                <div class="col-1">
+                    {{ form_widget(form.Recherche) }}
+                </div>
+                <div class="col-1">
+                    {{ form_widget(form.Reset) }}
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+
+{# Liste des signaux #}
+
+			{% if signals %}
+				<h3>Liste des signaux</h3>
+				Nombre de signaux : {{nbSignals}}
+                    <table class="table table-secondary table-hover table-striped table-bordered table-sm"> 
+                        <thead>
+                            <tr>
+                            <th scope="col" class="text-center h4">id</th>
+                            <th scope="col" class="text-center h4">description</th>
+                            <th scope="col" class="text-center h4">date de création</th>
+                            <th scope="col" class="text-center h4">indication</th>
+                            <th scope="col" class="text-center h4">denomination</th>
+                            <th scope="col" class="text-center h4">dci</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for signal in signals %}
+                                {% set deno = "" %}
+                                {% set dci = "" %}
+                                {% if signal.produits %}
+
+                                    {% for produit in signal.produits %}
+                                        {% set deno = deno ~ '<p>- ' ~ produit.denomination ~ '</p>' %}  
+                                        {% set dci = dci ~ '<p>- ' ~ produit.dci ~ '</p>' %} <br/>
+                                    {% endfor %}
+
+                                {% endif %}
+                                <tr>
+                                    <th scope="row" class="text-center h6">
+                                        <a href="{{ path('affiche_signal',{'idSignal':signal.id}) }}" target="_blank" class="text-light">{{ signal.id|e }}</a>
+                                    </th>
+                                    <td class="h6">{{signal.description}}</td>
+                                    <td class="text-center h6">{{signal.DateCreation|format_datetime('short', 'none', locale='fr')}}</td>
+                                    <td class="h6">{{signal.Indication}}</td>
+                                    <td class="h6">{{deno|raw}}</td>
+                                    <td class="h6">{{dci|raw}}</td>
+                                </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+			{% endif %}
+		</div>
+
+{% endblock %}

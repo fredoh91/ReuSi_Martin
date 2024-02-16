@@ -2,6 +2,18 @@
 {% block body %}
 
 Onglet suivi
+
+
+      <button type="button" class="btn-envoi m-2 btn-new" data-collection="#suivis">Ajout suivi</button>
+      <div 
+          id="suivis" 
+          data-prototype="{{ include ('nouveau_signal/_suivi.html.twig', {form: signal_desc_form.suivis.vars.prototype})|e("html_attr") }}" 
+          data-index="{{signal_desc_form.suivis|length > 0 ? signal_desc_form.suivis|last.vars.name + 1 : 0 }}">
+        {% for suivi in signal_desc_form.suivis %}
+          {{ include ('nouveau_signal/_suivi.html.twig', {form: suivi}) }}
+        {% endfor %} 
+      </div>
+
 {# <div class="example-wrapper">
     {{ form(suivi_form) }}
 </div> #}

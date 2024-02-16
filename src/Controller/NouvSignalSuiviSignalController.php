@@ -40,7 +40,7 @@ class NouvSignalSuiviSignalController extends AbstractController
         }
 
         return $this->render('nouv_signal_suivi_signal/index.html.twig', [
-            'controller_name' => 'NouvSignalSuiviSignalController',
+            // 'controller_name' => 'NouvSignalSuiviSignalController',
             'suivi_form' => $suiviForm->createView(),
             'releve_form' => $releveForm->createView(),
         ]);

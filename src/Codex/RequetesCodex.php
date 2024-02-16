@@ -238,12 +238,8 @@ class RequetesCodex
     {
         $produit = new Produit;
 
-        // $sql = "SELECT * FROM savu WHERE nomSubstance LIKE '%clobazam%';";
         $sql = "SELECT DISTINCT " 
-        . "	vuutil.nomVU, " 
-        . "	savu.nomSubstance, " 
-        . "	savu.dosageLibra, " 
-        . "	savu.libCourt, " 
+        . "	vuutil.nomVU, "  
         . "	vuutil.dbo_Autorisation_libAbr, " 
         . "	vuutil.dbo_ClasseATC_libAbr, " 
         . "	vuutil.dbo_ClasseATC_libCourt, " 
@@ -269,7 +265,6 @@ class RequetesCodex
         . "	vuutil.codeActeur " 
         . "FROM " 
         . "	vuutil " 
-        . "	INNER JOIN savu ON vuutil.codeVU = savu.codeVU "  
         . " WHERE vuutil.codeVU = " . $CodeVU ;
 
 
@@ -278,25 +273,115 @@ class RequetesCodex
         
         if (!empty($stmt_2)){
 
+            $sub = $this->donneDCI_dosage_voie_parCodeVU($CodeVU);
+            $prescDeliv = $this->donneDCI_delivrance_parCodeVU($CodeVU);
+
             $produit->setDenomination($stmt_2[0]['nomVU']);
-            $produit->setDCI($stmt_2[0]['nomSubstance']);
-            $produit->setDosage($stmt_2[0]['nomSubstance']);
-            $produit->setVoie($stmt_2[0]['nomSubstance']);
+            $produit->setDCI($sub['DCI']);
+            $produit->setDosage($sub['dosage']);
+            $produit->setVoie($sub['voie']);
+            $produit->setLaboratoire($stmt_2[0]['nomActeurLong']);
+            $produit->setIdLaboratoire($stmt_2[0]['codeActeur']);
+            $produit->setTypeProcedure($stmt_2[0]['dbo_Autorisation_libAbr']);
+            $produit->setCodeCIS($stmt_2[0]['codeVU']);
+            $produit->setCodeVU($stmt_2[0]['codeVU']);
+            $produit->setCodeDossier($stmt_2[0]['codeDossier']);
+            $produit->setNomVU($stmt_2[0]['nomVU']);
+            $produit->setTitulaire($stmt_2[0]['nomContactLibra']);
+            $produit->setIdTitulaire($stmt_2[0]['codeContact']);
+            $produit->setAdresseContact($stmt_2[0]['adresseContact']);
+            $produit->setAdresseCompl($stmt_2[0]['adresseCompl']);
+            $produit->setCodePost($stmt_2[0]['codePost']);
+            $produit->setNomVille($stmt_2[0]['nomVille']);
+            $produit->setTelContact($stmt_2[0]['telContact']);
+            $produit->setFaxContact($stmt_2[0]['faxContact']);
+            $produit->setAdresse($stmt_2[0]['adresse']);
+            $produit->setAdresseComplExpl($stmt_2[0]['adresseComplExpl']);
+            $produit->setCodePostExpl($stmt_2[0]['codePostExpl']);
+            $produit->setNomVilleExpl($stmt_2[0]['nomVilleExpl']);
+            $produit->setTel($stmt_2[0]['tel']);
+            $produit->setFax($stmt_2[0]['fax']);
             $produit->setCodeATC($stmt_2[0]['dbo_ClasseATC_libAbr']);
             $produit->setLibATC($stmt_2[0]['dbo_ClasseATC_libCourt']);
+            $produit->setPrescriptionDelivrance($prescDeliv);
 
             return $produit;
-            // foreach ($stmt_2[0] as $prod) {
-            //     dump($prod);
-            // }
+
             
         } else {
             return null;
         }
-        // dd($stmt_2);
-        // dd($produit);
             
     }
 
+    public function donneDCI_dosage_voie_parCodeVU(int $CodeVU): array
+    {
+
+        $sql = "SELECT " 
+        . "	savu.nomSubstance, " 
+        . "	savu.dosageLibra, " 
+        . "	savu.libCourt AS 'voie' " 
+        . "	FROM " 
+        . "	savu " 
+        . "	WHERE savu.codeVU = " . $CodeVU ;
+
+        $stmt = $this->em->getConnection()->prepare($sql);
+        $stmt_2 = $stmt->execute()->fetchAll();
+        $retour = [];
+
+        if (!empty($stmt_2)){
+            // foreach ($stmt_2[0] as $prod) {
+                foreach ($stmt_2 as $prod) {
+                if (empty($retour)){
+                    $retour['DCI']= $prod['nomSubstance'];
+                    $retour['dosage']= $prod['dosageLibra'];
+                    $retour['voie']= $prod['voie'];
+                } else {
+                    $retour['DCI']= $retour['DCI'] . "/" . $prod['nomSubstance'];
+                    $retour['dosage']= $retour['dosage'] . "/" . $prod['dosageLibra'];
+                    $retour['voie']= $retour['voie'] . "/" . $prod['voie'];
+                }
+            }
+
+            return $retour;
+            
+        } else {
+            return null;
+        }
+            
+    }
+
+    public function donneDCI_delivrance_parCodeVU(int $CodeVU): string
+    {
+
+        $sql = "SELECT " 
+        . "	vudelivrance.codeVU, " 
+        . "	vudelivrance.codeDelivrance, " 
+        . "	vudelivrance.libLong " 
+        . "	FROM " 
+        . "	vudelivrance " 
+        . "	WHERE vudelivrance.codeVU = " . $CodeVU ;
+
+
+        $stmt = $this->em->getConnection()->prepare($sql);
+        $stmt_2 = $stmt->execute()->fetchAll();
+        
+
+        if (!empty($stmt_2)){
+            // foreach ($stmt_2[0] as $prod) {
+                foreach ($stmt_2 as $presc) {
+                if (empty($prescDeliv)){
+                    $prescDeliv= $presc['libLong'];
+                } else {
+                    $prescDeliv= $prescDeliv . "/" .$presc['libLong'];
+                }
+            }
+
+            return $prescDeliv;
+            
+        } else {
+            return null;
+        }
+    }
 
 }
